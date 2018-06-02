@@ -22,13 +22,10 @@ public static void regedit(String manufacturer,String model)  {
 				str0 += "\r\n "+"[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\OEMInformation]";
 				str0 += "\r\n "+ "\"Manufacturer\"=\""+manufacturer+"\"";
 				str0 += "\r\n "+"\"Model\"=\""+model+"\"";
-		String str1 = "\r\n "+"\"Logo\"=\""+imgPath+"\"";
+		        str0 += "\r\n "+"\"Logo\"=\""+imgPath+"\"";
 
 		ps = new OutputStreamWriter(new FileOutputStream(f),"GB2312");
 		ps.append(str0);
-		if (imgPath!=""&&imgPath!=null){
-			ps.append(str1);
-		}
 		ps.close();
 	} catch (FileNotFoundException e) {
 		e.printStackTrace();
