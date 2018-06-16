@@ -4,19 +4,15 @@ import java.io.*;
 
 public class GetAdmin {
 
-    private static String bat;
 
-     public static void regedit()  {
+     public static void regedit() throws IOException {
+
+        String bat;//bat文件内容
+
         File f=new File("C:\\OEM\\run.bat");
-        if (!f.exists()){
-            try {
-                f.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        OutputStreamWriter ps;
-        try {
+
+        OutputStreamWriter outputStreamWriter;
+
            bat = "@echo off";
             bat += "\r\n"+">nul 2>&1 \"%SYSTEMROOT%\\system32\\cacls.exe\" \"%SYSTEMROOT%\\system32\\config\\system\"" ;
             bat += "\r\n"+"if '%errorlevel%' NEQ '0' (  " ;
@@ -34,15 +30,9 @@ public class GetAdmin {
             bat += "\r\n"+":begin" ;
             bat += "\r\n"+"regedit C:\\\\OEM\\\\OEM信息.reg";
 
-            ps = new OutputStreamWriter(new FileOutputStream(f),"GB2312");
-            ps.append(bat);
-            ps.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+         outputStreamWriter = new OutputStreamWriter(new FileOutputStream(f),"GB2312");
+         outputStreamWriter.append(bat);
+         outputStreamWriter.close();
+
     }
 }

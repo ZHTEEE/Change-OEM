@@ -11,18 +11,14 @@ import java.awt.event.MouseListener;
 
 public class JpanelOnClick implements MouseListener {
 
-
+    private String imagePath;
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
         try {
 
-            String imagePath = FileChooser.fileChooser();
-            if (imagePath!=""&&imagePath!=null){
-                MyJFrame.logoPanel.setImage(imagePath);
-                MyJFrame.logoPanel.updateUI();
-                CMD.imgPath = imagePath;
-            }
+            imagePath = FileChooser.fileChooser();
 
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
@@ -33,6 +29,13 @@ public class JpanelOnClick implements MouseListener {
         } catch (IllegalAccessException e1) {
             e1.printStackTrace();
         }
+
+        if (imagePath!=""&&imagePath!=null){
+            MyJFrame.logoPanel.setImage(imagePath);
+            MyJFrame.logoPanel.updateUI();
+            CMD.imgPath = imagePath;
+        }
+
     }
 
     @Override

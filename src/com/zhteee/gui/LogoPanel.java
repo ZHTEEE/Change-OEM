@@ -13,9 +13,12 @@ public class LogoPanel extends JPanel {
     private static String imagePath;
 
     public static void setImage(String imgPath){
+
             imagePath = imgPath;
+
     }
 
+    @Override
     public void paint(Graphics g) {
         try {
             if (imagePath!=null){

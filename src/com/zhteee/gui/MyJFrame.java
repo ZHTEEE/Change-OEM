@@ -11,9 +11,13 @@ public class MyJFrame extends JFrame {
 	public static JTextField Model = new JTextField("型号");
 	public static JButton button = new JButton("生成");
 	public static LogoPanel logoPanel = new LogoPanel();
-	public static JPanel massage = new JPanel();
+//	public static JPanel massage = new JPanel();
 
-	public  MyJFrame() {
+	public  MyJFrame() throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+
+
+		//将UI风格设置为当前操作系统
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
 		this.setLayout(null);
 		this.setVisible(true);

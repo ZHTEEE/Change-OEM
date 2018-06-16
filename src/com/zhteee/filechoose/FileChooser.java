@@ -9,10 +9,14 @@ public class FileChooser {
 
     //打开文件选择器
     public static String fileChooser() throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
         String fileName = "";
         Properties prop = System.getProperties();
+
+        //获得当前系统登陆用户
         String userName = prop.getProperty("user.name");
+
+        //默认打开目录为桌面
         JFileChooser jfc=new JFileChooser("C:\\Users\\"+userName+"\\Desktop");
         BmpFileFilter bmpFilter = new BmpFileFilter(); //文件过滤器
         jfc.addChoosableFileFilter(bmpFilter);
@@ -25,6 +29,7 @@ public class FileChooser {
         return fileName;
     }
 }
+
 //文件过滤器
 class BmpFileFilter extends FileFilter {
     public String getDescription() {
